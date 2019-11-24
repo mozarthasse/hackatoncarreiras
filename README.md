@@ -1,7 +1,7 @@
 # hackatoncarreiras
 Trabalho para o hackaton de carreiras
 
-1. Questões de pesquisa e justificativas:
+#1. Questões de pesquisa e justificativas:
 
 * Qual a amplitude e variação nos valores dos campos?
 - necessário para verificar a integridade dos dados e para tirar conclusões mais evidentes ou que possam direcionar os passos seguintes na pesquisa.
@@ -23,7 +23,7 @@ Trabalho para o hackaton de carreiras
 - verificar se há efeito mensurável na difusão dos poluentes em função da proximidade entre as estações.
 
 
-2. Ferramentas usadas
+#2. Ferramentas usadas
 
 - Linux Ubuntu: software livre base para uso de todos os outros, incluindo o bash para o processamento trivial de arquivos.
 
@@ -34,7 +34,7 @@ Trabalho para o hackaton de carreiras
 - Python: linguagem prática e rápida para transformar em imagens os dados e ajudar no direcionamento da análise.
 
 
-3. Tratamento dos dados e métodos usados
+#3. Tratamento dos dados e métodos usados
 
 3.1. Junção dos dados em um único arquivo CSV com todos os campos tratados
 
@@ -65,7 +65,7 @@ O formato weka é praticamente igual ao csv, sendo necessário apenas acrescenta
 A conversão de csv para arff foi feita através da execução do arquivo "junta2.sh". Neste arquivo foram feitas versões separadas das estações ("entrada1.arff" a "entrada12.arff") para que se possa oportunamente usar o pacote de análise de séries temporais.
 
 
-4. Resultados coletados
+#4. Resultados coletados
 
 
-5. Conclusões
+#5. Conclusões
