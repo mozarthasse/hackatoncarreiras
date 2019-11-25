@@ -43,7 +43,7 @@ Site: https://ubuntu.com/download/desktop , versão 18.04.3 LTS
 os pacotes ```wheel``` e ```pandas```.
 Site: https://www.python.org/ , VERSÃO EXIGIDA 3.6.8 (nem maior nem menor)
 
-- Rodeo: IDE para o Python. Site: https://rodeo.yhat.com/docs/#installing-rodeo , versão 2.4.10. É possível também usar o Visual Studio Code (com os devidos plugins) para visualizar e depurar o código. Também é possível executar diretamente da linha de comando qualquer dos pogramas criados, bastando para isso que os arquivos de dados de entrada tenham sido gerados.
+É possível usar o Visual Studio Code (com os devidos plugins) para visualizar e depurar o código. Também é possível executar diretamente da linha de comando qualquer dos pogramas criados, bastando para isso que os arquivos de dados de entrada tenham sido gerados e o arquivo ```preprocessado.csv``` esteja na mesma pasta.
 
 
 ## 3. Tratamento dos dados e métodos usados
@@ -52,9 +52,9 @@ Site: https://www.python.org/ , VERSÃO EXIGIDA 3.6.8 (nem maior nem menor)
 
 Resumo macro:
 ```
-  PRSA_Data_20130301-20170228 + junta.sh => junto.csv
-  junto.csv => preprocessamento.ods
-  preprocessamento.ods => preprocessado.csv + cabecalho.arff
+  PRSA_Data_20130301-20170228 + junta.sh (bash)=> junto.csv
+  junto.csv (abrir)=> preprocessamento.ods
+  preprocessamento.ods (salvar como)=> preprocessado.csv + cabecalho.arff
 ```
 
 Decidiu-se juntar os dados de todas as estações em um único arquivo para facilitar o processamento via planilha. Usou-se para isso o arquivo ```junta.sh```, que transforma todos os arquivos em um único chamado ```junto.csv```
@@ -73,12 +73,25 @@ selecionando-se a primeira planilha do arquivo e mandando salvá-la como ```prep
 ### 3.2. Preparação para uso do Weka
 
 Resumo macro:
-  ```junta2.sh + cabecalho.arff + preprocessado.csv => entrada*.arff```
+  ```junta2.sh + cabecalho.arff + preprocessado.csv (bash)=> entrada*.arff```
 
 O formato do Weka é praticamente igual ao csv, sendo necessário apenas acrescentar um cabeçalho (arquivo ```cabecalho.arff``` gerado a partir do ```preprocessamento.ods```). Um cuidado foi tomado para tornar os dados mais convenientes para o Weka: todos os campos não preenchidos (valores ```NA```) foram trocados para ```?```, que é o padrão do Weka para este caso.
 
 A conversão de csv para arff foi feita através da execução do arquivo ```junta2.sh```. Neste arquivo foram feitas versões separadas das estações (```entrada1.arff``` a ```entrada12.arff```) para que se possa oportunamente usar os pacotes de tratamento (http://weka.sourceforge.net/doc.packages/timeSeriesFilters) e previsão de séries temporais (http://wiki.pentaho.com/display/DATAMINING/Time+Series+Analysis+and+Forecasting+with+Weka).
 
+### 3.3. Montagem e totalização das médias/desvios via Python para as planilhas de totalização
+
+Resumo macro:
+  ```preprocessado.csv (bash mv)=> python\preprocessado.csv```
+  ```python\preprocessado.csv + visual.py (python3)=> gráficos por estação + saída de texto (colagem manual)=> anuais.ods```
+  ```python\preprocessado.csv + recorrentes.py (python3)=> month*_m*.csv + day*_m*.csv + 'dia da semana*_m*.csv' + hour*_m*.csv```
+
+### 3.4. Montagem das planilhas de totalização
+
+Resumo macro:
+   ```montastats.sh + month*_m*.csv + day*_m*.csv + 'dia da semana*_m*.csv' + hour*_m*.csv (bash)=> month??.csv + day??.csv + semana??.csv + hour??.csv ```
+  ```month??.csv + day??.csv + semana??.csv + hour??.csv (colagem anual)=> mensais.ods + dários.ods + semanais.ods + porhora.ods```
+  
 
 ## 4. Resultados coletados
 
@@ -110,6 +123,7 @@ Já o campo PM10 é relacionado principalmente aos campos:
 
 ### Existem padrões recorrentes nos dados?
 
+A análise dos padrões recorrentes nos dados foi feita pela média, tanto geral quanto por estação. Os valores coletados foram gerados pelo programa ```recorrentes.py``` e tabulados nas planilhas ```mensais.ods```, ```dários.ods```, ```semanais.ods``` e ```porhora.ods``` da pasta ```python```. Nestes gráficos e tabelas é possível avaliar a evolução de cada um dos poluentes em cada estação, além da comparação delas com a média geral.
 
 ### Os dados seguem alguma tendência ao longo do período estudado?
 
