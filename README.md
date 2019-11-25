@@ -14,13 +14,10 @@ Trabalho para o hackaton de carreiras
 
 As hipóteses mais óbvias a analisar consistem em identificar a presença ou ausência de padrões:
 
--- anuais
-
--- mensais
-
--- semanais
-
--- diários
+- anuais
+- mensais
+- semanais
+- diários
 
 
 ### Os dados seguem alguma tendência ao longo do período estudado?
@@ -82,16 +79,31 @@ A conversão de csv para arff foi feita através da execução do arquivo ```jun
 ### 3.3. Montagem e totalização das médias/desvios via Python para as planilhas de totalização
 
 Resumo macro:
-  ```preprocessado.csv (bash mv)=> python\preprocessado.csv```
-  ```python\preprocessado.csv + visual.py (python3)=> gráficos por estação + saída de texto (colagem manual)=> anuais.ods```
-  ```python\preprocessado.csv + recorrentes.py (python3)=> month*_m*.csv + day*_m*.csv + 'dia da semana*_m*.csv' + hour*_m*.csv```
+```
+  preprocessado.csv (bash mv)=> python\preprocessado.csv
+  python\preprocessado.csv + visual.py (python3)=> gráficos por estação + saída de texto (colagem manual)=> anuais.ods
+  python\preprocessado.csv + recorrentes.py (python3)=> month*_m*.csv + day*_m*.csv + 'dia da semana*_m*.csv' + hour*_m*.csv
+```
+
+Os gráficos das tendências anuais foram gerados diretamente pelo Python devido ao volume de dados, grande demais para que uma planilha consiga manipular com desempenho razoável. Aproveitou-se o mesmo código para calcular os desvios-padrões e médias anuais, que foram transcritos para a planilha ```anuais.ods```. Preferiu-se dividir os dados por estação para conferir se existem divergências relevantes na variação de dados entre os indicadores ou entre as estações.
+
+
+Gráficos foram montados para cada indicador e métrica e foram anexados na mesma planilha onde fica a tabela de dados correspondente.  A média geral foi destacada nos gráficos para facilitar a identificação das estações com medições significativamente acima ou abaixo da média geral para o mesmo dia, mês ou hora.
+
+
+A montagem das tabelas foi obtida a partir da saída do programa ```recorrentes.py```, que gera um arquivo por indicador, poluente e valor. Um arquivo adicional (com o valor máximo possível+1) foi gerado para cada métrica para registrar as médias de todos os dados e anos para o valor respectivo. Por exemplo: os arquivos day32_m25.csv e day32_m10.csv corresponde aos totais dos poluentes PM2.5 e PM10 por estação, respectivamente. Estes arquivos, mesmo que redundantes, facilitam a montagem da tabela presente nas planilhas e tornam mais fácil a comparação de valores e identificação de quais estações e valores ficam acima ou abaixo da média.  
+
 
 ### 3.4. Montagem das planilhas de totalização
 
 Resumo macro:
-   ```montastats.sh + month*_m*.csv + day*_m*.csv + 'dia da semana*_m*.csv' + hour*_m*.csv (bash)=> month??.csv + day??.csv + semana??.csv + hour??.csv ```
-  ```month??.csv + day??.csv + semana??.csv + hour??.csv (colagem anual)=> mensais.ods + dários.ods + semanais.ods + porhora.ods```
+```
+  montastats.sh + month*_m*.csv + day*_m*.csv + 'dia da semana*_m*.csv' + hour*_m*.csv (bash)=> month??.csv + day??.csv + semana??.csv + hour??.csv
+  month??.csv + day??.csv + semana??.csv + hour??.csv (colagem anual)=> mensais.ods + dários.ods + semanais.ods + porhora.ods
+```
   
+Todos os arquivos gerados via python foram agrupados na ordem adequada para formar as tabelas colocadas nas planilhas correspondentes. Esta montagem em etapas não é muito eficiente mas é prática e rápida considerando o volume de dados e o tempo de processamento. Se os dados fossem outros ou os valores tivessem maior variedade, seriam necessárias outras automações, porém dado o tempo disponível e o objetivo do trabalho isso não foi considerado prioritário. Diversos pontos do processo poderiam passar por automações e simplificações caso estes dados tivessem maior volume ou sofressem atualização constante.
+
 
 ## 4. Resultados coletados
 
@@ -101,11 +113,13 @@ Os resultados coletados foram organizados conforme sua relevância para responde
 
 Ao abrir o Weka, usar o explorer, abrir o arquivo entrada.arff clicar no campo correspondente, é possível obter os histogramas de todos os campos, assim como mínimos, máximos, médias e desvios-padrões respectivos. Os resultados foram colocados na planilha ```Weka/estatisticas.ods```. Alguns campos (SO2, NO2 e O3) têm uma variação enorme nos valores e aparentemente pouca utilidade preditiva.
 
+
 Já os campos PM2.5, PM10, CO e a intensidade do vento possuem histogramas similares e tiveram sua correlação confirmada pelo Weka através de outro processo.
 
 ### Existem correlações relevantes entre os campos?
 
 A capacidade preditiva dos campos foi medida com o uso do algoritmo "Correlation-based Feature Subset Selection", identificado no Weka como ```weka.attributeSelection.CfsSubsetEval```. Foi usado o mecanismo 10-fold cross-validation para minimizar o efeito de distorções pontuais nos dados e o resultado foi registrado nos arquivos ```Weka/selecaoatributospm25.txt``` e ```Weka/selecaoatributospm10.txt``` para os campos PM2.5 e PM10 respectivamente.
+
 
 Conforme estes resultados, o campo PM2.5 é relacionado principalmente aos seguintes campos:
 * Dia da semana
@@ -114,6 +128,7 @@ Conforme estes resultados, o campo PM2.5 é relacionado principalmente aos segui
 * Direção do vento
 * Intensidade do vento
 
+
 Já o campo PM10 é relacionado principalmente aos campos:
 * Dia
 * Hora
@@ -121,21 +136,29 @@ Já o campo PM10 é relacionado principalmente aos campos:
 * Chuva
 * Estação de medição
 
+
 ### Existem padrões recorrentes nos dados?
 
-A análise dos padrões recorrentes nos dados foi feita pela média, tanto geral quanto por estação. Os valores coletados foram gerados pelo programa ```recorrentes.py``` e tabulados nas planilhas ```mensais.ods```, ```dários.ods```, ```semanais.ods``` e ```porhora.ods``` da pasta ```python```. Nestes gráficos e tabelas é possível avaliar a evolução de cada um dos poluentes em cada estação, além da comparação delas com a média geral.
+A análise dos padrões recorrentes nos dados foi feita pela média, tanto geral quanto por estação. Os valores coletados foram gerados pelo programa ```recorrentes.py``` e tabulados nas planilhas ```mensais.ods```, ```dários.ods```, ```semanais.ods``` e ```porhora.ods``` da pasta ```python```. Nestes gráficos e tabelas é possível avaliar a evolução de cada um dos poluentes em cada estação e por cada métrica analisada, além da comparação das médias das estações com a média geral.
+
+
+Em todas as dimensões analisadas (mensal, semanal, diário e por hora), foram encontrados ciclos relevantes. As medições de todas as estações seguiram quase sempre a tendência geral, subindo ou descendo conforme a média em grau similar em praticamente todas as situações. Em cada caso foi possível identificar algumas estações com valores sempre acima da média e outras com valores sempre abaixo. Os casos em que houve alguma diferenciação nas tendências são detalhados mais abaixo no item 5.
+
 
 ### Os dados seguem alguma tendência ao longo do período estudado?
 
 A análise das tendências anuais foi feita pela média, tanto geral quanto por estação. Os valores coletados foram gerados pelo programa ```visual.py``` e tabulados na planilha ```python/anuais.ods```. Nestes gráficos é possível avaliar a evolução de cada um dos poluentes em cada estação, além da comparação deles com a média geral. O ano foi mantido conforme o padrão proposto pelos dados, de março do ano corrente até o último dia de fevereiro do ano seguinte. Manter os mesmos períodos em todos os anos permite uma comparação mais coerente.
 
+
 No caso do PM2.5, as médias anuais indicam que em praticamente todas as estações (exceto Huairou) a tendência foi de queda de 2013 a 2015 e aumento entre 2015 e 2016.
+
 
 No caso do PM10, as médias anuais indicam que em praticamente todas as estações (exceto Aotizhongxin) a tendência foi de queda comparando-se 2013 com 2015 e aumento entre 2015 e 2016.
 
+
 ### Considerando que são dados coletados em regiões próximas, existe correlação entre os valores obtidos nas diversas estações?
 
-O Weka identificou a existência de uma correlação entre o vento e o poluente PM2.5 e também identificou que não há uma correlação significativa do vento com o poluente PM10.
+O Weka identificou a existência de uma correlação entre o vento e o poluente PM2.5 e também identificou que não há uma correlação significativa do vento com o poluente PM10. Também com identificada a correlação da chuva apenas com o poluente PM10, sendo que o poluente PM2.5 não demonstra ser influenciado significativamente pela ocorrência de chuva.
 
 
 ## 5. Explicação dos dados
