@@ -9,8 +9,8 @@ Trabalho para o hackaton de carreiras
 ### Existem correlações relevantes entre os campos?
 - justificativa: descobrir e/ou eliminar as conclusões mais triviais antes de tentar mecanismos mais elaborados de análise.
 
-### Existem padrões recorrentes nos dados?
-- justificativa: buscar por padrões cíclicos que expliquem a maior parte da variação nos valores e permita alguma previsibilidade a curto prazo. 
+### Existem tendências ou padrões recorrentes nos dados?
+- justificativa: buscar por padrões cíclicos que expliquem a maior parte da variação nos valores e permita identificar tendências e ter alguma previsibilidade.
 
 As hipóteses mais óbvias a analisar consistem em identificar a presença ou ausência de padrões:
 
@@ -110,12 +110,18 @@ Já o campo PM10 é relacionado principalmente aos campos:
 
 ### Existem padrões recorrentes nos dados?
 
+
 ### Os dados seguem alguma tendência ao longo do período estudado?
 
+A análise das tendências anuais foi feita pela média, tanto geral quanto por estação. Os valores coletados foram gerados pelo programa ```visual.py``` e tabulados na planilha ```python/anuais.ods```. Nestes gráficos é possível avaliar a evolução de cada um dos poluentes em cada estação, além da comparação deles com a média geral. O ano foi mantido conforme o padrão proposto pelos dados, de março do ano corrente até o último dia de fevereiro do ano seguinte. Manter os mesmos períodos em todos os anos permite uma comparação mais coerente.
+
+No caso do PM2.5, as médias anuais indicam que em praticamente todas as estações (exceto Huairou) a tendência foi de queda de 2013 a 2015 e aumento entre 2015 e 2016.
+
+No caso do PM10, as médias anuais indicam que em praticamente todas as estações (exceto Aotizhongxin) a tendência foi de queda comparando-se 2013 com 2015 e aumento entre 2015 e 2016.
 
 ### Considerando que são dados coletados em regiões próximas, existe correlação entre os valores obtidos nas diversas estações?
 
-O Weka identificou a existência de uma correlação entre o vento e o poluente PM2.5 e também identificou que NÃO HÁ uma correlação significativa com o poluente PM10.
+O Weka identificou a existência de uma correlação entre o vento e o poluente PM2.5 e também identificou que não há uma correlação significativa do vento com o poluente PM10.
 
 
 ## 5. Explicação dos dados
