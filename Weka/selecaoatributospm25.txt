@@ -1,0 +1,60 @@
+=== Run information ===
+
+Evaluator:    weka.attributeSelection.CfsSubsetEval -P 1 -E 1
+Search:       weka.attributeSelection.BestFirst -D 1 -N 5
+Relation:     beijingpm-weka.filters.supervised.attribute.AddClassification-classification-distribution-Wweka.classifiers.rules.ZeroR-weka.filters.unsupervised.attribute.Remove-R24-25
+Instances:    420768
+Attributes:   23
+              Número
+              Ano
+              Mês
+              Dia
+              Dia da semana
+              Hora
+              Dia normalizado
+              PM2.5
+              PM10
+              SO2
+              NO2
+              CO
+              O3
+              Temperatura
+              Pressão
+              Ponto de orvalho
+              Chuva
+              Direção do vento
+              Ângulo do vento
+              Vento
+              Estação
+              Latitude
+              Longitude
+Evaluation mode:    10-fold cross-validation
+
+
+
+=== Attribute selection 10 fold cross-validation seed: 1 ===
+
+number of folds (%)  attribute
+           0(  0 %)     1 Número
+           0(  0 %)     2 Ano
+           0(  0 %)     3 Mês
+           0(  0 %)     4 Dia
+          10(100 %)     5 Dia da semana
+           0(  0 %)     6 Hora
+           0(  0 %)     7 Dia normalizado
+          10(100 %)     9 PM10
+           6( 60 %)    10 SO2
+           4( 40 %)    11 NO2
+          10(100 %)    12 CO
+           0(  0 %)    13 O3
+           0(  0 %)    14 Temperatura
+           0(  0 %)    15 Pressão
+           0(  0 %)    16 Ponto de orvalho
+           0(  0 %)    17 Chuva
+          10(100 %)    18 Direção do vento
+           0(  0 %)    19 Ângulo do vento
+          10(100 %)    20 Vento
+           0(  0 %)    21 Estação
+           0(  0 %)    22 Latitude
+           0(  0 %)    23 Longitude
+
