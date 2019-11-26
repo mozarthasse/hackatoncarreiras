@@ -177,15 +177,29 @@ O Weka identificou a existência de uma correlação entre o vento e o poluente 
 Considerando o enorme volume de dados (420768 medições), as análise realizadas permitem tirar algumas conclusões. Cabem algumas ressalvas também:
 * diversos artigos publicados já analisaram dados SIMILARES de estações DIFERENTES. Algumas dessas conclusões não foram confirmadas pela análise da base proposta, o que significa que estes dados possuem um volume considerável de RUÍDO que pode ser associado à localização EXATA e específica das estações de medição. Infelizmente esta informação de localização não está disponível nos dados passados e nem é facilmente encontrável publicamente para quem não fala chinês. Devido o tempo disponível, as análises precisaram se limitar aos dados a nível mais macro para evitar conclusões precipitadas que poderiam ser decorrentes de especialização excessiva ("overfitting").
 * todas as planilhas possuem tabelas e gráficos ilustrando as principais constatações, que sustentam as afirmações deste documento. Todos os gráficos trataram as estações de forma imparcial e aproveitaram o máximo possível o volume de dados disponível.
+* Não há informações sobre a população coberta por cada estação nem sobre a topografia da região para saber se há alguma proporcionalidade nessas medições. As localizações de fontes poluidoras significativas (como fábricas e engarrafamentos frequentes) também não são conhecidas, por isso conclusões sobre a média geral são limitadas apenas a comparações entre estas estações.
 
 
 ## 6. Explicação dos dados
 
-Esta seção pretende responder ao pedido "Demonstre o comportamento dos poluentes". Seguem as principais conclusões sobre o comportamento de cada poluente, com ênfase em suas diferenças.
+Esta seção pretende responder ao pedido "Demonstre o comportamento dos poluentes". Portanto, em linguajar simples e de maneira sucinta, seguem as principais conclusões sobre o comportamento de cada poluente e estação, com ênfase em suas diferenças e no que pode se deduzir visualmente dos gráficos e tabelas apresentados.
+
+O principal fator que determina o comportamento dos poluentes é a localização, especialmente o fato de estar ou não no centro da cidade, perto de um de seus 5 anéis viários.
+
+Não surprende portanto que as estações de Changping, Dingling, Huairou e (em menor grau) Shunyi, por estarem relativamente distantes do centro da cidade e dos anéis viários, tenham leituras mais baixas que a média e vez por outra não apresentem (ou apresentem em menor intensidade) as tendências identificadas nos padrões recorrentes das outras estações. Estas 4 estações em muitos casos são praticamente as únicas abaixo da média, por isso foram colocadas com estilos de linha diferentes na maioria dos gráficos. A variação entre elas também é maior, enquanto que as outras 8 estações têm um comportamento muito mais parecido entre elas, o que também não surpreende tanto considerando que geograficamente estão mais próximas umas das outras.
 
 ### P2.5
 
-
+O padrão deste poluente é basicamente o mesmo em todas as estações. Estatisticamente, este componente é influenciado pelo vento na região onde ocorre a medição. Quanto ao restante:
+* os picos mensais são em março e dezembro. Há uma queda considerável e praticamente constante de março até agosto, quando este poluente atinge seus menores valores e depois volta a subir.
+* o comportamento ao longo de cada més é mais variado, oscilando o mês inteiro. O que pode-se identificar de comum são os mínimos, especialmente no dia 12 e outra descida não tão profunda no dia 27.
+* durante a semana, este poluente tem seu menor valor às segundas-feiras. Os valores vão crescendo dia após dia até chegar no auge aos sábados, quando então voltam a cair até o mínimo semanal na segunda-feira seguinte.
+* ao longo do dia, pode-se observar que o mínimo ocorre as seis e sete horas da manhã. Ocorre uma relativa estabilidade com pequeno crescimento até as 17 horas, quando a poluição nas estações da região central e em Shunyi sobe até o ápice entre 19 e 21 horas, quando entao volta a cair lentamente até o mínimo na manhã do dia seguinte. Em Dingling o nível oscila pouco durante o dia no que diz respeito a este poluente.
 
 ### P10
 
+O padrão deste poluente é basicamente o mesmo em todas as estações. Estatisticamente, este componente é influenciado pela variação de chuva na região onde ocorre a medição. Quanto ao restante:
+* o valor mensal mais alto para este poluente é em março, apesar de em dezembro estar o segundo maior valor no ano. Há uma queda considerável e praticamente constante de março até agosto, quando este poluente atinge seus menores valores e depois volta a subir.
+* o comportamento ao longo de cada més é mais variado, oscilando o mês inteiro. O que pode-se identificar de comum são os mínimos, especialmente no dia 12 e outras descidas não tão profundas nos dias 2 e 27. Há também o valor máximo em todas as estações no dia 15 (ou 16 em Huairou, apesar da diferença ser mínima).
+* durante a semana, este poluente tem seu menor valor às segundas-feiras. Os valores nas estações mais próximas do centro vão crescendo dia após dia até chegar no auge aos sábados, quando então voltam a cair até o mínimo semanal na segunda-feira seguinte. Já nas estações Changping, Dingling, Huairou o nível deste poluente fica baixo de segunda a quarta, quando então sobe até o ápice na sábado e volta a cair para o mínimo na segunda-feira da semana seguinte.
+* ao longo do dia, pode-se observar que o mínimo ocorre as seis e sete horas da manhã. Ocorre uma relativa estabilidade com pequeno crescimento até as 17 horas, quando a poluição nas estações da região central e em Shunyi sobe até o ápice entre 19 e 21 horas, quando entao volta a cair lentamente até o mínimo na manhã do dia seguinte. Em Dingling o nível oscila pouco durante o dia no que diz respeito a este poluente. Já nas outras estações da periferia o ápice ocorre cerca de 2 horas antes das demais estações.
