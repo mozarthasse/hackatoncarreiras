@@ -188,7 +188,7 @@ O principal fator que determina o comportamento dos poluentes é a localização
 
 Não surprende portanto que as estações de Changping, Dingling, Huairou e (em menor grau) Shunyi, por estarem relativamente distantes do centro da cidade e dos anéis viários, tenham leituras mais baixas que a média e vez por outra não apresentem (ou apresentem em menor intensidade) as tendências identificadas nos padrões recorrentes das outras estações. Estas 4 estações em muitos casos são praticamente as únicas abaixo da média, por isso foram colocadas com estilos de linha diferentes na maioria dos gráficos. A variação entre elas também é maior, enquanto que as outras 8 estações têm um comportamento muito mais parecido entre elas, o que também não surpreende tanto considerando que geograficamente estão mais próximas umas das outras.
 
-### P2.5
+### PM2.5
 
 O padrão deste poluente é basicamente o mesmo em todas as estações. Estatisticamente, este componente é influenciado pelo vento na região onde ocorre a medição. Quanto ao restante:
 * os picos mensais são em março e dezembro. Há uma queda considerável e praticamente constante de março até agosto, quando este poluente atinge seus menores valores e depois volta a subir.
@@ -196,7 +196,7 @@ O padrão deste poluente é basicamente o mesmo em todas as estações. Estatist
 * durante a semana, este poluente tem seu menor valor às segundas-feiras. Os valores vão crescendo dia após dia até chegar no auge aos sábados, quando então voltam a cair até o mínimo semanal na segunda-feira seguinte.
 * ao longo do dia, pode-se observar que o mínimo ocorre as seis e sete horas da manhã. Ocorre uma relativa estabilidade com pequeno crescimento até as 17 horas, quando a poluição nas estações da região central e em Shunyi sobe até o ápice entre 19 e 21 horas, quando então volta a cair lentamente até o mínimo na manhã do dia seguinte. Em Dingling o nível oscila pouco durante o dia no que diz respeito a este poluente.
 
-### P10
+### PM10
 
 O padrão deste poluente é basicamente o mesmo em todas as estações. Estatisticamente, este componente é influenciado pela variação de chuva na região onde ocorre a medição. Quanto ao restante:
 * o valor mensal mais alto para este poluente é em março, apesar de em dezembro estar o segundo maior valor no ano. Há uma queda considerável e praticamente constante de março até agosto, quando este poluente atinge seus menores valores e depois volta a subir.
